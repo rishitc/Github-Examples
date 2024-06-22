@@ -1,0 +1,20 @@
+# [Optional: Default: Name of file] Name of the template that is used by the Actions tab's action list.
+name: Greetings
+
+on: [pull_request_target, issues]
+
+jobs:
+  # The name of the job is "greeting"
+  greeting:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+    steps:
+    # Link: https://github.com/actions/first-interaction
+    - uses: actions/first-interaction@v1
+    # Passes `repo-token`, `issue-message` and `pr-message` as input into the action
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        issue-message: "Message that will be displayed on users' first issue"
+        pr-message: "Message that will be displayed on users' first pull request"
