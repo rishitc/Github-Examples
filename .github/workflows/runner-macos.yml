@@ -25,8 +25,14 @@ jobs:
         run: |
           echo "::debug::This is a debug message"
       - name: masked message
+        id: sets-a-secret
         run: |
-          echo "The masked value is ::add-mask::${{ github.repo }}"
+          the_secret=$((RANDOM))
+          echo "::add-mask::$the_secret"
+          echo "secret-number=$the_secret" >> "$GITHUB_OUTPUT"
+      - name: Use that secret output (protected by a mask)
+        run: |
+          echo "the secret number is ${{ steps.sets-a-secret.outputs.secret-number }}"
       - name: error message
         run: |
           echo "::error::This is an error message"
