@@ -33,6 +33,16 @@ jobs:
       - name: Use that secret output (protected by a mask)
         run: |
           echo "the secret number is ${{ steps.sets-a-secret.outputs.secret-number }}"
+      - name: masked message
+        id: sets-another-secret
+        run: |
+          the_secret=10
+          echo "::add-mask::$the_secret"
+          echo "secret-number=$the_secret" >> "$GITHUB_OUTPUT"
+      - name: Use that secret output (protected by a mask)
+        if: ${{ steps.sets-another-secret.outputs.secret-number }} == 10
+        run: |
+          echo "the other secret number is ${{ steps.sets-another-secret.outputs.secret-number }}"
       - name: error message
         run: |
           echo "::error::This is an error message"
