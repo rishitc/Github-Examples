@@ -44,7 +44,7 @@ jobs:
           echo "Hash of files: ${{ hashFiles('**/README.md') }}"
       - name: The job has succeeded
         if: ${{ success() }}
-        run:
+        run: echo "Done"
       - name: The job has failed
         if: ${{ failure() }}
-        run:
+        run: echo "Done"
