@@ -21,3 +21,12 @@ jobs:
       - name: Set env var step-2
         run: |
           echo $MY_VAL
+      - name: debug message
+        run: |
+          echo "::debug::This is a debug message"
+      - name: masked message
+        run: |
+          echo "The masked value is ::add-mask::${{ github.repo }}"
+      - name: error message
+        run: |
+          echo "::error::This is an error message"
