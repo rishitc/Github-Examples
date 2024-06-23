@@ -9,11 +9,11 @@ jobs:
         steps:
             - name: My first step
               run: |
-                echo "Hello! $MY_ACTION"
+                echo "Action: $MY_ACTION"
               env:
                 MY_ACTION: ${{ github.action }}
             - name: My second step
               run: |
-                echo "Hello! $MY_ACTOR"
+                echo "Actor: $MY_ACTOR"
               env:
                 MY_ACTOR: ${{ github.actor }}
