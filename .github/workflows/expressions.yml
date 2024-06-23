@@ -43,6 +43,9 @@ jobs:
       - name: Hash files
         run: |
           echo "Hash of files: ${{ hashFiles('./test-file-for-hashing') }}"
+      - name: Hash files
+        run: |
+          shasum -a 256 ./test-file-for-hashing
       - name: The job has succeeded
         if: ${{ success() }}
         run: echo "Done"
