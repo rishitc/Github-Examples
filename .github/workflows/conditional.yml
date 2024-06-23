@@ -13,4 +13,4 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Say "Goodbye Moon!"
-              run: echo "Goodbye Moon!"
+              run: echo "Goodbye Moon! ${{ hashFiles('./README.md') }}"
