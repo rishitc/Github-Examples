@@ -36,12 +36,13 @@ jobs:
       - name: Parse JSON string
         run: |
           echo "Parsed JSON: ${{ fromJSON('{"hello":"world"}').hello }}"
+      - uses: actions/checkout@v1
       - name: Hash files
         run: |
           echo "Hash of files: ${{ hashFiles('**/package-lock.json', '**/Gemfile.lock') }}"
       - name: Hash files
         run: |
-          echo "Hash of files: ${{ hashFiles('**/README.md') }}"
+          echo "Hash of files: ${{ hashFiles('./README.md') }}"
       - name: The job has succeeded
         if: ${{ success() }}
         run: echo "Done"
